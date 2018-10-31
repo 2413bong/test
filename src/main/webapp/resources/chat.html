@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+
+var ws;
+function doInit(){
+	ws= new WebSocket('ws://192.168.0.10/wstest');
+	ws.onopen = function(evt){
+		alert('연결 성공');
+	}
+	ws.onerror = function(e){
+		alert(e);
+	}
+	ws.onmessage = function(evt){
+		alert(evt.data);
+	}
+}
+function send(){
+	ws.send('hello');
+	
+}
+window.addEventListener('load',doInit);
+</script>
+
+
+</body>
+</html>
